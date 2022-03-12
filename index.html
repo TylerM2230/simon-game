@@ -10,43 +10,68 @@
     <!-- Import the webpage's javascript file -->
     <script src="/script.js" defer></script>
   </head>
-  
+
   <body>
     <!-- The wrapper and content divs set margins and positioning -->
     <div class="wrapper">
       <div class="content" role="main">
         <!-- This is the start of content for our page -->
         <h1 class="title">Light and Sound Memory Game</h1>
-        
-        <button id="startBtn" onclick="startGame()">
-           Start
-        </button>
-        <button id="stopBtn" onclick="stopGame()" class="hidden">
-           Stop
-        </button>
-        
-        <!-- Instructions on using this project -->
+
+        <button id="startBtn" onclick="startGame()">Start</button>
+        <button id="stopBtn" onclick="stopGame()" class="hidden">Stop</button>
+
         <div class="instructions">
+          <p>Welcome to the game! Repeat back the pattern to win the game.</p>
           <p>
-            Welcome to the game! Repeat back the pattern to win the game.
+             Three <strong>(3)</strong> strikes and you're out!
           </p>
-          <!-- ADD BUTTON HERE -->
-        <div id="gameButtonArea">
-          <button id="button1" onclick="guess(1)" onmousedown="startTone(1)" onmouseup="stopTone()"/>
-          <button id="button2" onclick="guess(2)" onmousedown="startTone(2)" onmouseup="stopTone()"/>
-          <button id="button3" onclick="guess(3)" onmousedown="startTone(3)" onmouseup="stopTone()" />
-          <button id="button4" onclick="guess(4)" onmousedown="startTone(4)" onmouseup="stopTone()" />
-        </div>
-          
-          
-          
-          
-          <!-- Once you've added the button from the readme, click it in the page -->
-          <!-- Check out the function in script.js to see how it works -->
+          <div id="gameButtonArea">
+            <button
+              id="button1"
+              onclick="guess(1)"
+              onmousedown="startTone(1)"
+              onmouseup="stopTone()"
+            />
+            <button
+              id="button2"
+              onclick="guess(2)"
+              onmousedown="startTone(2)"
+              onmouseup="stopTone()"
+            />
+            <button
+              id="button3"
+              onclick="guess(3)"
+              onmousedown="startTone(3)"
+              onmouseup="stopTone()"
+            />
+            <button
+              id="button4"
+              onclick="guess(4)"
+              onmousedown="startTone(4)"
+              onmouseup="stopTone()"
+            />
+            <button
+              id="button5"
+              onclick="guess(5)"
+              onmousedown="startTone(5)"
+              onmouseup="stopTone()"
+            />
+            <button
+              id="button6"
+              onclick="guess(6)"
+              onmousedown="startTone(6)"
+              onmouseup="stopTone()"
+            />
+          </div>
+         <div id="bottom">
+           <div id="strikes" />
+         </div>
+         <div id="bottom2">
+            <div id="counter"/>
+         </div>
+          </div>
         </div>
       </div>
-    </div>
-    
-  
   </body>
 </html>

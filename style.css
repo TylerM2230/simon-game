@@ -57,7 +57,7 @@ END Glitch hello-app default styles
 
 body {
   font-family: HK Grotesk;
-  background-color: slategrey;
+  background-color: dimgrey;
   color: white; 
 }
 
@@ -82,7 +82,7 @@ h1
 
 /* Very light scaling for our illustration */
 .title {
-  color: #2800FF;
+  color: yellow;
   font-family: HK Grotesk;
   font-style: normal;
   font-weight: bold;
@@ -99,9 +99,7 @@ h1
 }
 
 /* Instructions */
-.instructions {
-  margin: 1rem auto 0;
-}
+
 
 /* Button - Add it from the README instructions */
 button,
@@ -113,6 +111,7 @@ input {
   box-sizing: border-box;
   border-radius: 10px;
   padding: 10px;
+  width: 100px;
   transition: 500ms;
   margin: 3px;
 }
@@ -155,6 +154,13 @@ input {
     background: lightyellow;
 }
 
+#button5 {
+    background: plum;
+}
+
+#button6{
+    background: lightsalmon;
+}
 /* --- Game Button Active --- */
 #button1:active, #button1.lit{
     background:green;
@@ -172,7 +178,21 @@ input {
     background:yellow;
 }
 
+#button5:active, #button5.lit {
+    background:purple;
+}
 
+#button6:active, #button6.lit {
+    background:maroon;
+}
+
+#bottom
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 
 /* Subheading */

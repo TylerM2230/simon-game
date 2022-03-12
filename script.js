@@ -1,30 +1,36 @@
 // global constants
-const clueHoldTime = 1000; //how long to hold each clue's light/sound
 const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
 
 //Global Variables
-var pattern = [2, 2, 4, 3, 2, 1, 2, 4];
+var pattern = [];
 var progress = 0;
 var gamePlaying = false;
 var tonePlaying = false;
 var volume = 0.5; //must be between 0.0 and 1.0
 var guessCounter = 0;
+var strikes = 3
+
+var clueHoldTime = 1000; //how long to hold each clue's light/sound
 
 function startGame() {
   //initialize game variables
   progress = 0;
   gamePlaying = true;
-
+  clueHoldTime = 1000;
+  strikes = 3;
   // swap the Start and Stop buttons
   document.getElementById("startBtn").classList.add("hidden");
   document.getElementById("stopBtn").classList.remove("hidden");
 
+  renderStrikes();
+  generatePattern();
   playClueSequence();
 }
 
 function stopGame() {
   gamePlaying = false;
+  document.getElementById("strikes").innerHTML = "";
   document.getElementById("stopBtn").classList.add("hidden");
   document.getElementById("startBtn").classList.remove("hidden");
 }
@@ -66,6 +72,23 @@ function playClueSequence() {
     delay += clueHoldTime;
     delay += cluePauseTime;
   }
+  clueHoldTime -= 25*progress;
+}
+
+function renderStrikes()
+{
+    document.getElementById("strikes").innerHTML = "";
+    let strike = document.createElement('div');
+    strike.innerText = strikes ==  1 ? strikes + " more attempt" : strikes +" more attempts";
+    document.getElementById("strikes").appendChild(strike);
+}
+
+function generatePattern()
+{
+  for(let ii= 0; ii < 8; ii++)
+  {
+      pattern.push(Math.floor(Math.random() * (Math.floor(6) - Math.ceil(1)) + Math.ceil(1)));
+  }
 }
 
 function guess(btn) {
@@ -89,10 +112,18 @@ function guess(btn) {
       //so far so good... check the next guess
       guessCounter++;
     }
-  } else {
+  }
+  else if(strikes > 1)
+  {
+    strikes--;
+    renderStrikes();
+  }
+  else {
     //Guess was incorrect
     //GAME OVER: LOSE!
-    loseGame();
+    strikes--;
+    renderStrikes();
+    setTimeout(loseGame(), 5000);
   }
 }
 
@@ -104,10 +135,12 @@ This is a comment that can span multiple lines
 
 // Sound Synthesis Functions
 const freqMap = {
-  1: 261.6,
-  2: 329.6,
-  3: 392,
-  4: 466.2,
+  1: 430.6,
+  2: 120.2,
+  3: 362.9,
+  4: 726.2,
+  5: 95.4,
+  6: 502
 };
 function playTone(btn, len) {
   o.frequency.value = freqMap[btn];
