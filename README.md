@@ -4,8 +4,6 @@
 
 Submitted by: Tyler Miranda
 
-Time spent: 4 hours spent in total
-
 Link to project: (insert your link here, should start with https://glitch.com...)
 
 ## Required Functionality
