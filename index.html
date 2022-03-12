@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="/style.css" />
     <!-- Import the webpage's javascript file -->
     <script src="/script.js" defer></script>
+    <script src="/confetti.js"></script>
+    <!-- font awesome stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
@@ -20,58 +27,75 @@
 
         <button id="startBtn" onclick="startGame()">Start</button>
         <button id="stopBtn" onclick="stopGame()" class="hidden">Stop</button>
-
+      
+        <button id="start-confetti" onclick="startConfetti();scrollBottom();" class="hidden">
+          Start Confetti
+        </button>
+        <button id="stop-confetti" onclick="stopConfetti()" class="hidden">
+          Stop Confetti
+        </button>
         <div class="instructions">
           <p>Welcome to the game! Repeat back the pattern to win the game.</p>
-          <p>
-             Three <strong>(3)</strong> strikes and you're out!
-          </p>
+          <p>Three <strong>(3)</strong> strikes and you're out!</p>
+          <p>You have <strong>(10)</strong> seconds to enter your guess.</p>
           <div id="gameButtonArea">
             <button
               id="button1"
               onclick="guess(1)"
               onmousedown="startTone(1)"
               onmouseup="stopTone()"
-            />
+            >
+              <i id="btn-1-icon" class="fas fa-solid fa-dragon fa-3x"></i>
+            </button>
             <button
               id="button2"
               onclick="guess(2)"
               onmousedown="startTone(2)"
               onmouseup="stopTone()"
-            />
+            >
+              <i class="fas fa-solid fa-dove fa-3x"></i>
+            </button>
             <button
               id="button3"
               onclick="guess(3)"
               onmousedown="startTone(3)"
               onmouseup="stopTone()"
-            />
+            >
+              <i class="fas fa-solid fa-crow fa-3x"></i>
+            </button>
             <button
               id="button4"
               onclick="guess(4)"
               onmousedown="startTone(4)"
               onmouseup="stopTone()"
-            />
+            >
+              <i class="fas fa-solid fa-dog fa-3x"></i>
+            </button>
             <button
               id="button5"
               onclick="guess(5)"
               onmousedown="startTone(5)"
               onmouseup="stopTone()"
-            />
+            >
+              <i class="fas fa-solid fa-fish fa-3x"></i>
+            </button>
             <button
               id="button6"
               onclick="guess(6)"
               onmousedown="startTone(6)"
               onmouseup="stopTone()"
-            />
+            >
+              <i class="fas fa-solid fa-kiwi-bird fa-3x"></i>
+            </button>
           </div>
-         <div id="bottom">
-           <div id="strikes" />
-         </div>
-         <div id="bottom2">
-            <div id="counter"/>
-         </div>
+          <div id="bottom">
+            <div id="strikes" />
+          </div>
+          <div id="bottom2">
+            <h2 id="counter-text"></h2>
           </div>
         </div>
       </div>
+    </div>
   </body>
 </html>

@@ -1,3 +1,4 @@
+
 // global constants
 const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
@@ -9,9 +10,11 @@ var gamePlaying = false;
 var tonePlaying = false;
 var volume = 0.5; //must be between 0.0 and 1.0
 var guessCounter = 0;
-var strikes = 3
-
+var strikes = 3;
 var clueHoldTime = 1000; //how long to hold each clue's light/sound
+var intervalID;
+
+
 
 function startGame() {
   //initialize game variables
@@ -30,7 +33,9 @@ function startGame() {
 
 function stopGame() {
   gamePlaying = false;
+  resetTimer();
   document.getElementById("strikes").innerHTML = "";
+  document.getElementById("bottom2").innerHTMl = '';
   document.getElementById("stopBtn").classList.add("hidden");
   document.getElementById("startBtn").classList.remove("hidden");
 }
@@ -43,6 +48,8 @@ function loseGame() {
 function winGame() {
   stopGame();
   alert("Congratulations. You won!");
+  document.getElementById("start-confetti").classList.remove("hidden");
+  document.getElementById("stop-confetti").classList.remove("hidden");
 }
 
 function lightButton(btn) {
@@ -64,15 +71,23 @@ function playSingleClue(btn) {
 function playClueSequence() {
   context.resume();
   guessCounter = 0;
-  let delay = nextClueWaitTime; //set delay to initial wait time
+  let delay = nextClueWaitTime;
+  let timerDelay = 0;
+  for (let i = 0; i <= progress; i++)
+    {
+      timerDelay += clueHoldTime;
+      timerDelay += cluePauseTime;
+    }
   for (let i = 0; i <= progress; i++) {
     // for each clue that is revealed so far
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms");
     setTimeout(playSingleClue, delay, pattern[i]); // set a timeout to play that clue
     delay += clueHoldTime;
     delay += cluePauseTime;
+    
   }
   clueHoldTime -= 25*progress;
+  setTimeout(startTimer,timerDelay);
 }
 
 function renderStrikes()
@@ -81,6 +96,32 @@ function renderStrikes()
     let strike = document.createElement('div');
     strike.innerText = strikes ==  1 ? strikes + " more attempt" : strikes +" more attempts";
     document.getElementById("strikes").appendChild(strike);
+}
+
+
+function startTimer()
+{
+    let count = 0;
+    let timeLeft = 10;
+    intervalID = setInterval(function(){
+      count++;
+      document.getElementById("counter-text").textContent = (timeLeft-count) == 1 ? + (timeLeft-count) + " second left" : (timeLeft-count) +" seconds left";
+      if(count == timeLeft)
+        {
+          loseGame();
+        }
+    },1000);
+}
+
+function resetTimer(){
+  clearInterval(intervalID);
+  console.log("reset timer")
+  document.getElementById("counter-text").textContent = '';
+}
+
+function scrollBottom()
+{
+  window.scrollTo(0,document.body.scrollHeight);
 }
 
 function generatePattern()
@@ -98,18 +139,15 @@ function guess(btn) {
   }
 
   if (pattern[guessCounter] == btn) {
-    //Guess was correct!
     if (guessCounter == progress) {
+      resetTimer();
       if (progress == pattern.length - 1) {
-        //GAME OVER: WIN!
         winGame();
       } else {
-        //Pattern correct. Add next segment
         progress++;
         playClueSequence();
       }
     } else {
-      //so far so good... check the next guess
       guessCounter++;
     }
   }
@@ -119,27 +157,20 @@ function guess(btn) {
     renderStrikes();
   }
   else {
-    //Guess was incorrect
-    //GAME OVER: LOSE!
     strikes--;
     renderStrikes();
+    resetTimer();
     setTimeout(loseGame(), 5000);
   }
 }
 
-// This is a single line JS comment
-/*
-This is a comment that can span multiple lines 
-- use comments to make your own notes!
-*/
-
 // Sound Synthesis Functions
 const freqMap = {
   1: 430.6,
-  2: 120.2,
+  2: 294.2,
   3: 362.9,
   4: 726.2,
-  5: 95.4,
+  5: 300.4,
   6: 502
 };
 function playTone(btn, len) {
