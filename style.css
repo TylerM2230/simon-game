@@ -109,11 +109,12 @@ input {
   background: #FFFFFF;
   border: 1px solid #000000;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 10px;
   width: 100px;
   transition: 500ms;
   margin: 3px;
+  cursor: pointer;
 }
 
 #gameButtonArea > button {
@@ -126,14 +127,14 @@ input {
   display: none;
 }
 
-#startBtn
+#startBtn, #start-confetti
 {
   background : green;
   color : white;
   
 }
 
-#stopBtn
+#stopBtn, #stop-confetti
 {
   background : red;
   color : white;
@@ -186,6 +187,7 @@ input {
     background:maroon;
 }
 
+
 #bottom
 {
   display: flex;
@@ -194,16 +196,16 @@ input {
   justify-content: center;
 }
 
+#bottom2
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Subheading */
+/* Counter text*/
 h2 {
-  color: #2800FF;
+  color: gold;
 }
 
-/* Button dip
-- Toggling this class on and off will move it down and up again
-- The button transition property above determines the speed of the translate (500ms)
-*/
-.dipped {
-  transform: translateY(5px);
-}
