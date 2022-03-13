@@ -44,7 +44,7 @@ Each button has a unique icon, tone, and color
 Number of attempts change depending on mode and each round has a unique pattern
 ![attempts change and counter](http://g.recordit.co/rS6GS4rPqw.gif)
 And if you win, you get confetti!
-![winning confetti](https://github.com/TylerM2230/simple-memory-game/confetti.gif)  
+![winning confetti](https://github.com/TylerM2230/simple-memory-game/blob/main/confetti.gif)  
 
 ## Reflection Questions
 1. If you used any outside resources to help complete your submission (websites, books, people, etc) list them here. 
