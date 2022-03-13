@@ -6,7 +6,7 @@ Submitted by: Tyler Miranda
 
 Time spent: 5 hours spent in total
 
-Link to project: Code(https://glitch.com/edit/#!/cuddly-tinted-morning)
+Link to project: (https://glitch.com/edit/#!/cuddly-tinted-morning)
 
 ## Required Functionality
 
