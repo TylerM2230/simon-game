@@ -134,13 +134,7 @@ input {
   
 }
 
-#start-confetti
-{
-  background : seagreen;
-  color : white;
-  font-size: 15px;
-  width: 500px;
-}
+
 
 #stopBtn
 {
@@ -148,13 +142,7 @@ input {
   color : white;
 }
 
-#stop-confetti
-{
-  background : crimson;
-  color : white;
-  font-size: 15px;
-  width: 500px;
-}
+
 
 #suddenDeathBtn
 {
@@ -218,11 +206,6 @@ input {
     background:maroon;
 }
 
-#confetti-control
-{
-  display: flex;
-  flex-direction: row;
-}
 
 #bottom
 {
@@ -264,12 +247,11 @@ h2 {
 
 /* Modal Content */
 .modal-content {
-  background-color: aliceblue;
+  background-color: goldenrod;
   margin: auto;
   padding: 20px;
   border: 1px solid #888888;
   width: 50%;
-  height: 75%;
 }
 
 /* The Close Button */

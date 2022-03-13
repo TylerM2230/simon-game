@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/style.css" />
     <!-- Import the webpage's javascript file -->
     <script src="/script.js" defer></script>
-    <script src="/confetti.js"></script>
     <!-- font awesome stylesheet -->
     <link
       rel="stylesheet"
@@ -24,7 +23,7 @@
 
         <h1 class="title">Light and Sound Memory Game</h1>
 
-        <button id="startBtn" onclick="startGame()">Start</button>
+        <button id="startBtn" onclick="winGame()">Start</button>
         <button id="stopBtn" onclick="stopGame()" class="hidden">Stop</button>
         
         <div id="mode-control">
@@ -39,16 +38,7 @@
             <p id="modal-lose-text" class="hidden">Game Over. You Lose :(</p>
           </div>
         </div>
-        
-        <div id="confetti-control">
-          <button id="start-confetti" onclick="startConfetti();scrollBottom();" class="hidden">
-          Start Confetti
-        </button>
-        <button id="stop-confetti" onclick="stopConfetti();hideConfettiButtons();" class="hidden">
-          Stop Confetti
-        </button>
-        </div>
-        
+    
         <div class="instructions">
           <p>Welcome to the game! Repeat back the pattern to win the game.</p>
           <p>You have <strong>(10)</strong> seconds to enter your guess.</p>
@@ -113,5 +103,6 @@
         </div>
       </div>
     </div>
+    
   </body>
 </html>
