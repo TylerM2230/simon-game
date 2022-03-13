@@ -6,7 +6,7 @@ Submitted by: Tyler Miranda
 
 Time spent: 5 hours spent in total
 
-Link to project: (insert your link here, should start with https://glitch.com...)
+Link to project: Code(https://glitch.com/edit/#!/cuddly-tinted-morning)
 
 ## Required Functionality
 
@@ -34,8 +34,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Added confetti after winning game
-- [x] Mode selection (choice whether to lose after 1 or 3 mistakes)
+- [x] Add confetti after winning game
+- [x] Add mode selection (choice whether to lose after 1 or 3 mistakes)
 
 ## Video Walkthrough (GIF)
 
