@@ -19,25 +19,34 @@
   </head>
 
   <body>
-    <!-- The wrapper and content divs set margins and positioning -->
     <div class="wrapper">
       <div class="content" role="main">
-        <!-- This is the start of content for our page -->
+
         <h1 class="title">Light and Sound Memory Game</h1>
 
         <button id="startBtn" onclick="startGame()">Start</button>
         <button id="stopBtn" onclick="stopGame()" class="hidden">Stop</button>
-      
-        <button id="start-confetti" onclick="startConfetti();scrollBottom();" class="hidden">
+        
+        <div id="mode-control">
+          <button id="suddenDeathBtn" onclick="suddenDeathMode();"><i id="suddenDeath-icon" class="fas fa-solid fa-skull-crossbones fa-lg"></i> Switch to Sudden Death Mode</button>
+          <button id="regularModeBtn" onclick="regularMode();" class="hidden"><i id="regularMode-icon" class="fas fa-solid fa-peace fa-lg"></i> Switch to Regular Mode</button>
+        </div>
+        
+        
+        <div id="confetti-control">
+          <button id="start-confetti" onclick="startConfetti();scrollBottom();" class="hidden">
           Start Confetti
         </button>
-        <button id="stop-confetti" onclick="stopConfetti()" class="hidden">
+        <button id="stop-confetti" onclick="stopConfetti();hideConfettiButtons();" class="hidden">
           Stop Confetti
         </button>
+        </div>
+        
         <div class="instructions">
           <p>Welcome to the game! Repeat back the pattern to win the game.</p>
-          <p>Three <strong>(3)</strong> strikes and you're out!</p>
           <p>You have <strong>(10)</strong> seconds to enter your guess.</p>
+          <p id="regular-mode">Three <strong>(3)</strong> strikes and you're out!</p>
+          <p id="sudden-death" class="hidden">One <strong>(1)</strong> mistake and you're out!</p>
           <div id="gameButtonArea">
             <button
               id="button1"

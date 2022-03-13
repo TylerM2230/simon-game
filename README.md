@@ -4,6 +4,8 @@
 
 Submitted by: Tyler Miranda
 
+Time spent: 5 hours spent in total
+
 Link to project: (insert your link here, should start with https://glitch.com...)
 
 ## Required Functionality
@@ -32,7 +34,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app!
+- [x] Added confetti after winning game
+- [x] Mode selection (choice whether to lose after 1 or 3 mistakes)
 
 ## Video Walkthrough (GIF)
 

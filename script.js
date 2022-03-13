@@ -4,16 +4,17 @@ const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
 
 //Global Variables
-var pattern = [];
+var pattern;
 var progress = 0;
 var gamePlaying = false;
 var tonePlaying = false;
 var volume = 0.5; //must be between 0.0 and 1.0
 var guessCounter = 0;
-var strikes = 3;
+var strikes;
 var clueHoldTime = 1000; //how long to hold each clue's light/sound
 var intervalID;
 
+var suddenDeath = false;
 
 
 function startGame() {
@@ -21,11 +22,14 @@ function startGame() {
   progress = 0;
   gamePlaying = true;
   clueHoldTime = 1000;
-  strikes = 3;
+  strikes = suddenDeath ? 1 : 3;
   // swap the Start and Stop buttons
   document.getElementById("startBtn").classList.add("hidden");
   document.getElementById("stopBtn").classList.remove("hidden");
 
+  document.getElementById("suddenDeathBtn").classList.add("hidden");
+  document.getElementById("regularModeBtn").classList.add("hidden");
+  
   renderStrikes();
   generatePattern();
   playClueSequence();
@@ -34,10 +38,16 @@ function startGame() {
 function stopGame() {
   gamePlaying = false;
   resetTimer();
+  generatePattern();
   document.getElementById("strikes").innerHTML = "";
   document.getElementById("bottom2").innerHTMl = '';
   document.getElementById("stopBtn").classList.add("hidden");
   document.getElementById("startBtn").classList.remove("hidden");
+  
+  let suddenElem = document.getElementById("suddenDeathBtn");
+  let regularElem = document.getElementById("regularModeBtn");
+  
+  suddenDeath ? regularElem.classList.remove("hidden"): suddenElem.classList.remove("hidden")
 }
 
 function loseGame() {
@@ -47,9 +57,9 @@ function loseGame() {
 
 function winGame() {
   stopGame();
-  alert("Congratulations. You won!");
   document.getElementById("start-confetti").classList.remove("hidden");
   document.getElementById("stop-confetti").classList.remove("hidden");
+  alert("Congratulations. You won!");
 }
 
 function lightButton(btn) {
@@ -79,7 +89,6 @@ function playClueSequence() {
       timerDelay += cluePauseTime;
     }
   for (let i = 0; i <= progress; i++) {
-    // for each clue that is revealed so far
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms");
     setTimeout(playSingleClue, delay, pattern[i]); // set a timeout to play that clue
     delay += clueHoldTime;
@@ -126,10 +135,39 @@ function scrollBottom()
 
 function generatePattern()
 {
+  pattern =[];
   for(let ii= 0; ii < 8; ii++)
   {
       pattern.push(Math.floor(Math.random() * (Math.floor(6) - Math.ceil(1)) + Math.ceil(1)));
   }
+}
+
+function hideConfettiButtons()
+{
+  document.getElementById("start-confetti").classList.add("hidden");
+  document.getElementById("stop-confetti").classList.add("hidden");
+}
+
+function suddenDeathMode()
+{
+  suddenDeath = true;
+  //switch instructions
+  document.getElementById("sudden-death").classList.remove("hidden");
+  document.getElementById("regular-mode").classList.add("hidden");
+  
+  //switch buttons
+  document.getElementById("suddenDeathBtn").classList.add("hidden");
+  document.getElementById("regularModeBtn").classList.remove("hidden");
+}
+
+function regularMode(){
+  suddenDeath = false;
+  
+  document.getElementById("sudden-death").classList.add("hidden");
+  document.getElementById("regular-mode").classList.remove("hidden");
+  
+  document.getElementById("suddenDeathBtn").classList.remove("hidden");
+  document.getElementById("regularModeBtn").classList.add("hidden");
 }
 
 function guess(btn) {
