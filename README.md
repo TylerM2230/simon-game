@@ -40,9 +40,9 @@ The following **additional** features are implemented:
 ## Video Walkthrough (GIF)
 
 Each button has a unique icon, tone, and color
-![buttons work and different modes](http://g.recordit.co/Y7R8euHTDM.gif) 
+![buttons work and different modes](https://github.com/TylerM2230/simple-memory-game/blob/main/featuresOne.gif) 
 Number of attempts change depending on mode and each round has a unique pattern
-![attempts change and counter](http://g.recordit.co/rS6GS4rPqw.gif)
+![attempts change and counter](https://github.com/TylerM2230/simple-memory-game/blob/main/featuresTwo.gif)
 And if you win, you get confetti!
 ![winning confetti](https://github.com/TylerM2230/simple-memory-game/blob/main/confetti.gif)  
 
