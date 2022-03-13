@@ -127,17 +127,46 @@ input {
   display: none;
 }
 
-#startBtn, #start-confetti
+#startBtn
 {
-  background : green;
+  background : darkgreen;
   color : white;
   
 }
 
-#stopBtn, #stop-confetti
+#start-confetti
+{
+  background : seagreen;
+  color : white;
+  font-size: 15px;
+}
+
+#stopBtn
 {
   background : red;
   color : white;
+}
+
+#stop-confetti
+{
+  background : crimson;
+  color : white;
+  font-size: 15px;
+}
+
+#suddenDeathBtn
+{
+  background:red;
+  font-size: 5 px;
+    width: 500px;
+}
+
+#regularModeBtn
+{
+  color:white;
+  background:green;
+  font-size: 15 px;
+   width: 500px;
 }
 
 /* --- Game Buttons --- */
@@ -187,6 +216,11 @@ input {
     background:maroon;
 }
 
+#confetti-control
+{
+  display: flex;
+  flex-direction: row;
+}
 
 #bottom
 {
