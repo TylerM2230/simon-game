@@ -32,6 +32,13 @@
           <button id="regularModeBtn" onclick="regularMode();" class="hidden"><i id="regularMode-icon" class="fas fa-solid fa-peace fa-lg"></i> Switch to Regular Mode</button>
         </div>
         
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-win-text">Congratulations! You Won!</p>
+            <p id="modal-lose-text" class="hidden">Game Over. You Lose :(</p>
+          </div>
+        </div>
         
         <div id="confetti-control">
           <button id="start-confetti" onclick="startConfetti();scrollBottom();" class="hidden">
