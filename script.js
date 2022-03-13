@@ -52,14 +52,23 @@ function stopGame() {
 
 function loseGame() {
   stopGame();
-  alert("Game Over. You lost.");
+  document.getElementById("modal-win-text").classList.add("hidden");
+  document.getElementById("modal-lose-text").classList.remove("hidden");
+  displayModal();
+  //alert("Game Over. You lost.");
 }
 
 function winGame() {
   stopGame();
   document.getElementById("start-confetti").classList.remove("hidden");
   document.getElementById("stop-confetti").classList.remove("hidden");
-  alert("Congratulations. You won!");
+  //alert("Congratulations. You won!");
+  document.getElementById("modal-lose-text").classList.add("hidden");
+  document.getElementById("modal-win-text").classList.remove("hidden");
+  
+  displayModal();
+  document.getElementById("suddenDeathBtn").classList.add("hidden");
+  document.getElementById("regularModeBtn").classList.add("hidden");
 }
 
 function lightButton(btn) {
@@ -244,3 +253,28 @@ g.connect(context.destination);
 g.gain.setValueAtTime(0, context.currentTime);
 o.connect(g);
 o.start(0);
+
+function displayModal()
+{
+  modal.style.display = "block";
+}
+
+//Modal
+
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
