@@ -39,10 +39,11 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough (GIF)
 
-If you recorded multiple GIFs for all the implemented features, you can add them here:
+Each button has a unique icon, tone, and color
 ![buttons work and different modes](http://g.recordit.co/Y7R8euHTDM.gif) 
-![diff patterns in same mode](http://g.recordit.co/3M041rVFjq.gif)  
-![attempts change and counter](http://g.recordit.co/rS6GS4rPqw.gif)  
+Number of attempts change depending on mode and each round has a unique pattern
+![attempts change and counter](http://g.recordit.co/rS6GS4rPqw.gif)
+And if you win, you get confetti!
 ![winning confetti](http://g.recordit.co/deh4C53SDm.gif)  
 
 ## Reflection Questions
