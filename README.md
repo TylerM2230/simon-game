@@ -53,7 +53,6 @@ And if you win, you get confetti!
     <li>W3Schools</li>
     <li>GeeksforGeeks</li>
     <li>StackOverflow</li>
-    <li>MDN Web Docs</li>
     <li>GitHub</li>
     <li>YouTube</li>
     <li>freeCodeCamp</li>
