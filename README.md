@@ -35,6 +35,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Add confetti after winning game
+- [x] Add modal for winning/losing message
 - [x] Add mode selection (choice whether to lose after 1 or 3 mistakes)
 
 ## Video Walkthrough (GIF)
