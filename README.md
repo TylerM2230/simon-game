@@ -72,7 +72,7 @@ And if you win, you get confetti!
 
 ## Interview Recording URL Link
 
-[My 5-minute Interview Recording](your-link-here)
+[My 5-minute Interview Recording](https://www.loom.com/share/284a25c3474e41f784da5c26ef6e23d4)
 
 
 ## License
