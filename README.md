@@ -1,4 +1,4 @@
-*Memory Game* 
+*Simon Game* 
 
 Link to project: [Code](https://glitch.com/edit/#!/cuddly-tinted-morning) / [Live Site](https://cuddly-tinted-morning.glitch.me)
 
