@@ -1,6 +1,6 @@
 *Simon Game* 
 
-Link to project: [Code](https://glitch.com/edit/#!/cuddly-tinted-morning) / [Live Site](https://cuddly-tinted-morning.glitch.me)
+Link to project: [Live Site](https://cuddly-tinted-morning.glitch.me)
 
 ## Video Walkthrough (GIF)
 
