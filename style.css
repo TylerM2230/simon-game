@@ -1,45 +1,59 @@
-/******************************************************************************
-START Glitch hello-app default styles
+/**
+ * SIMON GAME - STYLESHEET
+ * Light and Sound Memory Game
+ *
+ * This stylesheet defines the visual appearance and layout for the Simon game.
+ * It includes responsive design, button styling, animations, and modal dialogs.
+ */
 
-The styles in this section do some minimal CSS resets, set default fonts and 
-colors, and handle the layout for our footer and "Remix on Glitch" button. If
-you're new to CSS they may seem a little complicated, but you can scroll down
-to this section's matching END comment to see page-specific styles.
-******************************************************************************/
+/* =============================================================================
+   CSS CUSTOM PROPERTIES (CSS Variables)
+   ============================================================================= */
 
-
-/* 
-  The style rules specify elements by type and by attributes such as class and ID
-  Each section indicates an element or elements, then lists the style properties to apply
-  See if you can cross-reference the rules in this file with the elements in index.html
-*/
-
-/* Our default values set as CSS variables */
 :root {
+  /* Color scheme */
   --color-bg: #69F7BE;
   --color-text-main: #000000;
   --color-primary: #FFFF00;
+
+  /* Layout properties */
   --wrapper-height: 87vh;
   --image-max-width: 300px;
   --image-margin: 3rem;
+
+  /* Typography */
   --font-family: "HK Grotesk";
   --font-family-header: "HK Grotesk";
 }
 
-/* Basic page style resets */
+/* =============================================================================
+   GLOBAL RESETS AND BASE STYLES
+   ============================================================================= */
+
+/* Universal box-sizing reset for consistent layout */
 * {
   box-sizing: border-box;
 }
+
+/* Utility class for hiding elements */
 [hidden] {
   display: none !important;
 }
 
-/* Import fonts */
+.hidden {
+  display: none;
+}
+
+/* =============================================================================
+   FONT IMPORTS
+   ============================================================================= */
+
 @font-face {
   font-family: HK Grotesk;
   src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
     format("opentype");
 }
+
 @font-face {
   font-family: HK Grotesk;
   font-weight: bold;
@@ -47,61 +61,94 @@ to this section's matching END comment to see page-specific styles.
     format("opentype");
 }
 
-
 .divider {
   padding: 0 1rem;
 }
-/******************************************************************************
-END Glitch hello-app default styles
-******************************************************************************/
 
+/* =============================================================================
+   BASE ELEMENT STYLES
+   ============================================================================= */
+
+/* Main body styling */
 body {
-  font-family: HK Grotesk;
+  font-family: HK Grotesk, Arial, sans-serif;
   background-color: dimgrey;
-  color: white; 
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
-h1
-{
+/* Main heading styling */
+h1 {
   font-family: verdana, arial, sans-serif;
 }
 
-/* Page structure */
+/* Countdown timer text */
+h2 {
+  color: gold;
+  margin: 10px 0;
+}
+
+/* =============================================================================
+   LAYOUT COMPONENTS
+   ============================================================================= */
+
+/* Main page wrapper - centers content vertically and horizontally */
 .wrapper {
   min-height: var(--wrapper-height);
   display: grid;
   place-items: center;
   margin: 0 1rem;
 }
+
+/* Content container - flexbox for vertical layout */
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
-/* Very light scaling for our illustration */
+/* Game title styling */
 .title {
   color: yellow;
-  font-family: HK Grotesk;
+  font-family: HK Grotesk, Arial, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 50px;
   line-height: 105%;
-  margin: 0;
+  margin: 0 0 20px 0;
 }
 
-/* Very light scaling for our illustration */
-.illustration {
-  max-width: 100%;
-  max-height: var(--image-max-width);
-  margin-top: var(--image-margin);
+/* Game instructions container */
+.instructions {
+  margin: 20px 0;
+  max-width: 600px;
 }
 
-/* Instructions */
+/* Strike counter and timer containers */
+#bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
 
+#bottom2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
 
-/* Button - Add it from the README instructions */
+/* =============================================================================
+   BUTTON STYLES
+   ============================================================================= */
+
+/* Base button styling - applies to all buttons */
 button,
 input {
   font-family: inherit;
@@ -112,165 +159,290 @@ input {
   border-radius: 20px;
   padding: 10px;
   width: 100px;
-  transition: 500ms;
+  transition: all 0.3s ease;
   margin: 3px;
   cursor: pointer;
 }
 
+/* Hover effect for all buttons */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active state for all buttons */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================================================
+   CONTROL BUTTONS (Start, Stop, Mode Selection)
+   ============================================================================= */
+
+/* Start game button */
+#startBtn {
+  background: darkgreen;
+  color: white;
+  font-weight: bold;
+  width: 120px;
+}
+
+/* Stop game button */
+#stopBtn {
+  background: red;
+  color: white;
+  font-weight: bold;
+  width: 120px;
+}
+
+/* Sudden death mode button */
+#suddenDeathBtn {
+  background: red;
+  color: white;
+  font-size: 16px;
+  width: 300px;
+  padding: 15px;
+  margin: 10px;
+}
+
+/* Regular mode button */
+#regularModeBtn {
+  color: white;
+  background: green;
+  font-size: 16px;
+  width: 300px;
+  padding: 15px;
+  margin: 10px;
+}
+
+/* =============================================================================
+   GAME BUTTONS (The 6 colored buttons players press)
+   ============================================================================= */
+
+/* Container for game buttons */
+#gameButtonArea {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+  max-width: 650px;
+}
+
+/* Base styling for game buttons */
 #gameButtonArea > button {
-  width:200px;
-  height:200px;
-  margin:2px;
+  width: 200px;
+  height: 200px;
+  margin: 2px;
+  border-radius: 15px;
+  border: 3px solid #333;
+  transition: all 0.2s ease;
+  font-size: 24px;
 }
 
-.hidden {
-  display: none;
+/* Game button hover effects */
+#gameButtonArea > button:hover {
+  transform: scale(1.05);
+  border-width: 4px;
 }
 
-#startBtn
-{
-  background : darkgreen;
-  color : white;
-  
+/* Individual game button colors (default/inactive state) */
+#button1 {
+  background: lightgreen;
 }
 
-
-
-#stopBtn
-{
-  background : red;
-  color : white;
+#button2 {
+  background: lightblue;
 }
 
-
-
-#suddenDeathBtn
-{
-  background:red;
-  font-size: 5 px;
-    width: 500px;
+#button3 {
+  background: pink;
 }
 
-#regularModeBtn
-{
-  color:white;
-  background:green;
-  font-size: 15 px;
-   width: 500px;
-}
-
-/* --- Game Buttons --- */
-#button1{
-    background: lightgreen;
-}
-
-#button2{
-    background: lightblue;
-}
-#button3{
-    background: pink;
-}
 #button4 {
-    background: lightyellow;
+  background: lightyellow;
 }
 
 #button5 {
-    background: plum;
+  background: plum;
 }
 
-#button6{
-    background: lightsalmon;
-}
-/* --- Game Button Active --- */
-#button1:active, #button1.lit{
-    background:green;
+#button6 {
+  background: lightsalmon;
 }
 
-#button2:active, #button2.lit {
-    background:blue;
+/* Game button active/lit states (when pressed or during clue sequence) */
+#button1:active,
+#button1.lit {
+  background: green;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  transform: scale(0.95);
 }
 
-#button3:active, #button3.lit {
-    background:red;
+#button2:active,
+#button2.lit {
+  background: blue;
+  box-shadow: 0 0 20px rgba(0, 0, 255, 0.6);
+  transform: scale(0.95);
 }
 
-#button4:active, #button4.lit {
-    background:yellow;
+#button3:active,
+#button3.lit {
+  background: red;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  transform: scale(0.95);
 }
 
-#button5:active, #button5.lit {
-    background:purple;
+#button4:active,
+#button4.lit {
+  background: yellow;
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+  transform: scale(0.95);
 }
 
-#button6:active, #button6.lit {
-    background:maroon;
+#button5:active,
+#button5.lit {
+  background: purple;
+  box-shadow: 0 0 20px rgba(128, 0, 128, 0.6);
+  transform: scale(0.95);
 }
 
-
-#bottom
-{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#bottom2
-{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Counter text*/
-h2 {
-  color: gold;
+#button6:active,
+#button6.lit {
+  background: maroon;
+  box-shadow: 0 0 20px rgba(128, 0, 0, 0.6);
+  transform: scale(0.95);
 }
 
 
-/* Modal Style*/
+/* =============================================================================
+   MODAL DIALOG STYLES (Win/Lose Messages)
+   ============================================================================= */
 
+/* Modal overlay - covers entire screen */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  z-index: 1000; /* Sit on top of everything */
+  padding-top: 100px; /* Location of the modal content */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  animation: fadeIn 0.3s ease;
 }
 
-/* Modal Content */
+/* Modal content box */
 .modal-content {
   background-color: goldenrod;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888888;
-  width: 50%;
+  padding: 30px;
+  border: 3px solid #333;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* The Close Button */
+/* Modal close button (X) */
 .close {
-  color: #aaaaaa;
+  color: #666;
   float: right;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .close:hover,
 .close:focus {
-  color: #000000;
+  color: #000;
   text-decoration: none;
-  cursor: pointer;
 }
 
-#modal-win-text, #modal-lose-text
-{
-  color:black;
+/* Modal text content */
+#modal-win-text,
+#modal-lose-text {
+  color: black;
   text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+/* Fade in animation for modal background */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide in animation for modal content */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Tablet and mobile adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 36px;
+  }
+
+  #gameButtonArea {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  #gameButtonArea > button {
+    width: 150px;
+    height: 150px;
+  }
+
+  #suddenDeathBtn,
+  #regularModeBtn {
+    width: 250px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile phone adjustments */
+@media (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+
+  #gameButtonArea > button {
+    width: 120px;
+    height: 120px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  #suddenDeathBtn,
+  #regularModeBtn {
+    width: 200px;
+    font-size: 12px;
+  }
 }
